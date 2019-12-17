@@ -1,6 +1,7 @@
 package ru.phantomer.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -18,11 +19,13 @@ public class MainActivity extends AppCompatActivity {
         EditText firstInput = findViewById(R.id.editText);
         EditText secondInput = findViewById(R.id.editText2);
         TextView output = findViewById(R.id.textView);
-        output.setText(
-                Integer.parseInt(
-                        firstInput.getText().toString(),
-                        Integer.parseInt(secondInput.getText().toString())) + ""
-        );
+
+        int x = Integer.parseInt(secondInput.getText().toString());
+        if (x == 0)
+            output.setText("Деление на 0 невозможно");
+        else
+            output.setText((Integer.parseInt(firstInput.getText().toString()) / x)+ "");
+
 
     }
 
