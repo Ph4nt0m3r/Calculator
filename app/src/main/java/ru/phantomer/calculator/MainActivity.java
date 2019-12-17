@@ -15,6 +15,37 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+
+    public void minus(View view) {
+        EditText firstInput = findViewById(R.id.editText);
+        EditText secondInput = findViewById(R.id.editText2);
+        TextView output = findViewById(R.id.textView);
+
+        output.setText((Integer.parseInt(firstInput.getText().toString()) - Integer.parseInt(secondInput.getText().toString())) + "");
+
+
+    }
+
+    public void plus(View view) {
+        EditText firstInput = findViewById(R.id.editText);
+        EditText secondInput = findViewById(R.id.editText2);
+        TextView output = findViewById(R.id.textView);
+
+        output.setText((Integer.parseInt(firstInput.getText().toString()) + Integer.parseInt(secondInput.getText().toString())) + "");
+
+
+    }
+
+    public void multiplication(View view) {
+        EditText firstInput = findViewById(R.id.editText);
+        EditText secondInput = findViewById(R.id.editText2);
+        TextView output = findViewById(R.id.textView);
+
+        output.setText((Integer.parseInt(firstInput.getText().toString()) * Integer.parseInt(secondInput.getText().toString())) + "");
+
+
+    }
+
     public void calculate(View view) {
         EditText firstInput = findViewById(R.id.editText);
         EditText secondInput = findViewById(R.id.editText2);
@@ -24,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         if (x == 0)
             output.setText("Деление на 0 невозможно");
         else
-            output.setText((Integer.parseInt(firstInput.getText().toString()) / x)+ "");
+            output.setText((Integer.parseInt(firstInput.getText().toString()) / x) + "");
 
 
     }
