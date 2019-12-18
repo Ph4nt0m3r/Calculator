@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     public void exp(View view) {
         if (firstInput.getText().toString().isEmpty() || secondInput.getText().toString().isEmpty())
             return;
-        else if (secondInput.getText().toString().isEmpty() || secondInput.getText().toString().equals("0"))
+        else if (secondInput.getText().toString().isEmpty())
             output.setText(Math.pow(Double.parseDouble(firstInput.getText().toString()), 2) + "");
         else
             output.setText(Math.pow(Double.parseDouble(firstInput.getText().toString()), Double.parseDouble(secondInput.getText().toString())) + "");
