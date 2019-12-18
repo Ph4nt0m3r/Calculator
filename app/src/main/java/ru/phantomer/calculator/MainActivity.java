@@ -9,55 +9,66 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private EditText firstInput;
+    private  EditText secondInput;
+    private TextView output;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        firstInput = findViewById(R.id.editText);
+        secondInput = findViewById(R.id.editText2);
+        output = findViewById(R.id.textView);
     }
 
 
     public void minus(View view) {
-        EditText firstInput = findViewById(R.id.editText);
-        EditText secondInput = findViewById(R.id.editText2);
-        TextView output = findViewById(R.id.textView);
-
-        output.setText((Integer.parseInt(firstInput.getText().toString()) - Integer.parseInt(secondInput.getText().toString())) + "");
-
-
+        if (firstInput.getText().toString().isEmpty() || secondInput.getText().toString().isEmpty())
+            return;
+        output.setText((Double.parseDouble(firstInput.getText().toString()) - Double.parseDouble(secondInput.getText().toString())) + "");
     }
 
     public void plus(View view) {
-        EditText firstInput = findViewById(R.id.editText);
-        EditText secondInput = findViewById(R.id.editText2);
-        TextView output = findViewById(R.id.textView);
-
-        output.setText((Integer.parseInt(firstInput.getText().toString()) + Integer.parseInt(secondInput.getText().toString())) + "");
-
-
+        if (firstInput.getText().toString().isEmpty() || secondInput.getText().toString().isEmpty())
+            return;
+        output.setText((Double.parseDouble(firstInput.getText().toString()) + Double.parseDouble(secondInput.getText().toString())) + "");
     }
 
     public void multiplication(View view) {
-        EditText firstInput = findViewById(R.id.editText);
-        EditText secondInput = findViewById(R.id.editText2);
-        TextView output = findViewById(R.id.textView);
-
-        output.setText((Integer.parseInt(firstInput.getText().toString()) * Integer.parseInt(secondInput.getText().toString())) + "");
-
-
+        if (firstInput.getText().toString().isEmpty() || secondInput.getText().toString().isEmpty())
+            return;
+        output.setText((Double.parseDouble(firstInput.getText().toString()) * Double.parseDouble(secondInput.getText().toString())) + "");
     }
 
-    public void calculate(View view) {
-        EditText firstInput = findViewById(R.id.editText);
-        EditText secondInput = findViewById(R.id.editText2);
-        TextView output = findViewById(R.id.textView);
-
-        int x = Integer.parseInt(secondInput.getText().toString());
+    public void divide(View view) {
+        if (firstInput.getText().toString().isEmpty() || secondInput.getText().toString().isEmpty())
+            return;
+        double x = Double.parseDouble(secondInput.getText().toString());
         if (x == 0)
             output.setText("Деление на 0 невозможно");
         else
-            output.setText((Integer.parseInt(firstInput.getText().toString()) / x) + "");
-
-
+            output.setText((Double.parseDouble(firstInput.getText().toString()) / x) + "");
     }
 
+    public void sqrt(View view) {
+        if (firstInput.getText().toString().isEmpty() || secondInput.getText().toString().equals("0") || Double.parseDouble(firstInput.getText().toString()) < 1) {
+            output.setText("Данные неверны");
+            return;
+        } else if (secondInput.getText().toString().isEmpty())
+            output.setText(Math.sqrt(Double.parseDouble(firstInput.getText().toString())) + "");
+
+        else
+            output.setText(Math.pow(Double.parseDouble(firstInput.getText().toString()), (1 / Double.parseDouble(secondInput.getText().toString()))) + "");
+    }
+
+    public void exp(View view) {
+        if (firstInput.getText().toString().isEmpty() || secondInput.getText().toString().isEmpty())
+            return;
+        else if (secondInput.getText().toString().isEmpty() || secondInput.getText().toString().equals("0"))
+            output.setText(Math.pow(Double.parseDouble(firstInput.getText().toString()), 2) + "");
+        else
+            output.setText(Math.pow(Double.parseDouble(firstInput.getText().toString()), Double.parseDouble(secondInput.getText().toString())) + "");
+    }
 }
